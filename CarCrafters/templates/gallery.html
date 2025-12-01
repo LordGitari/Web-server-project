@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse our extensive collection of premium vehicles - CarCrafters Gallery">
+  <title>Gallery | CarCrafters</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/gallery.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">CarCrafters</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="car_detail.html">Car Details</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn-dark-mode" id="darkModeToggle" aria-label="Toggle dark mode">
+                            <i class="bi bi-moon-stars-fill"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero Section -->
+    <section class="gallery-hero py-5" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/mercedes.png') center/cover; min-height: 300px; display: flex; align-items: center;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="display-3 fw-bold text-white mb-3">Our Collection</h1>
+                <p class="lead text-white-50">Discover your perfect ride from our curated selection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter & Search Section -->
+    <section class="filter-section py-4">
+        <div class="container">
+            <div class="glass-panel filter-panel p-4">
+                <div class="row g-3 align-items-end">
+                    <!-- Search Bar -->
+                    <div class="col-lg-4">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-search me-2"></i>Search
+                        </label>
+                        <input type="text" class="form-control search-input" id="searchInput"
+                            placeholder="Search by brand or model...">
+                    </div>
+
+                    <!-- Brand Filter -->
+                    <div class="col-lg-2 col-md-4">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-building me-2"></i>Brand
+                        </label>
+                        <select class="form-select filter-select" id="brandFilter">
+                            <option value="">All Brands</option>
+                        </select>
+                    </div>
+
+                    <!-- Year Filter -->
+                    <div class="col-lg-2 col-md-4">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-calendar3 me-2"></i>Year
+                        </label>
+                        <select class="form-select filter-select" id="yearFilter">
+                            <option value="">All Years</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="col-lg-2 col-md-4">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-tag me-2"></i>Category
+                        </label>
+                        <select class="form-select filter-select" id="categoryFilter">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort By -->
+                    <div class="col-lg-2">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-sort-down me-2"></i>Sort By
+                        </label>
+                        <select class="form-select filter-select" id="sortBy">
+                            <option value="default">Default</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="year-new">Year: Newest First</option>
+                            <option value="year-old">Year: Oldest First</option>
+                            <option value="brand">Brand: A-Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Results Count & Clear Filters -->
+                <div class="row mt-3">
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <div class="results-count">
+                            <span class="badge bg-gradient-primary" id="resultsCount">0 cars found</span>
+                        </div>
+                        <button class="btn btn-sm btn-outline-gradient" id="clearFilters">
+                            <i class="bi bi-x-circle me-2"></i>Clear Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section class="gallery-grid-section py-5">
+        <div class="container">
+            <!-- Skeleton Loading Cards -->
+            <div class="text-center py-4 mb-4" id="skeletonLoader" style="display: none;">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" v-for="n in 6" :key="n">
+                        <div class="glass-card p-3">
+                            <div class="skeleton skeleton-img mb-3" style="height: 200px; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite;"></div>
+                            <div class="skeleton skeleton-text mb-2" style="height: 20px; width: 70%; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite;"></div>
+                            <div class="skeleton skeleton-text" style="height: 16px; width: 40%; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cars Grid -->
+            <div class="row g-4" id="carsGrid">
+                <!-- Car 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/mercedes.png" alt="Mercedes-Benz S-Class" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Mercedes S-Class</h4>
+                                <p class="mb-3">$85,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/elecric-car 1.jpeg" alt="Tesla Model S" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Tesla Model S</h4>
+                                <p class="mb-3">$70,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/mbwm4.png" alt="BMW M4" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">BMW M4</h4>
+                                <p class="mb-3">$58,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/audiq7.png" alt="Audi Q7" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Audi Q7</h4>
+                                <p class="mb-3">$46,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/porsche.png" alt="Porsche 911" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Porsche 911</h4>
+                                <p class="mb-3">$92,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/camry.png" alt="Toyota Camry" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Toyota Camry</h4>
+                                <p class="mb-3">$21,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 7 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/honda.png" alt="Honda Accord" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Honda Accord</h4>
+                                <p class="mb-3">$22,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 8 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/ford.png" alt="Ford Mustang" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Ford Mustang</h4>
+                                <p class="mb-3">$33,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 9 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/corvette.png" alt="Chevrolet Corvette" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Chevrolet Corvette</h4>
+                                <p class="mb-3">$50,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 10 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/lexus.png" alt="Lexus RX 350" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Lexus RX 350</h4>
+                                <p class="mb-3">$38,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 11 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/rangerover.png" alt="Range Rover Sport" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Range Rover Sport</h4>
+                                <p class="mb-3">$63,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 12 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/jaguar.png" alt="Jaguar F-Type" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Jaguar F-Type</h4>
+                                <p class="mb-3">$53,000</p>
+                                <a href="car_detail.html" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="text-center py-5 d-none" id="noResults">
+                <div class="glass-panel p-5">
+                    <i class="bi bi-search display-1 text-muted mb-3"></i>
+                    <h3 class="fw-bold mb-3">No Cars Found</h3>
+                    <p class="text-muted mb-4">We couldn't find any cars matching your criteria.</p>
+                    <button class="btn btn-gradient" onclick="document.getElementById('clearFilters').click()">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Reset Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand mb-3">
+                        <span class="brand-text">CarCrafters</span>
+                    </div>
+                    <p class="text-muted mb-3">Your trusted destination for exploring, comparing, and discovering the
+                        perfect vehicle for your lifestyle.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Car Reviews</a></li>
+                        <li><a href="#">Comparison Tool</a></li>
+                        <li><a href="#">Buying Guide</a></li>
+                        <li><a href="#">Latest News</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="fw-bold mb-3">Newsletter</h5>
+                    <p class="text-muted mb-3">Get the latest car news and deals</p>
+                    <form class="newsletter-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-gradient" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <div class="contact-info">
+                        <small class="text-muted d-block"><i class="bi bi-envelope me-1"></i>info@carcrafters.com</small>
+                        <small class="text-muted d-block"><i class="bi bi-phone me-1"></i>+1 (555) 123-4567</small>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2024 CarCrafters. All rights reserved. Crafted for car enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="../static/js/main.js"></script>
+  <script src="../static/js/gallery.js"></script>
+</body>
+
+</html>

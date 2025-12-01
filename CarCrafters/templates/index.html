@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+      content="CarCrafters - Your ultimate destination for exploring, comparing, and discovering your dream car">
+  <title>CarCrafters | Discover Your Dream Car</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <span class="brand-text">CarCrafters</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="car_detail.html">Car Details</a>
+          </li>
+          <li class="nav-item ms-3">
+            <button class="btn-dark-mode" id="darkModeToggle" aria-label="Toggle dark mode">
+              <i class="bi bi-moon-stars-fill"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1920&q=80"
+                        class="d-block w-100" alt="Luxury Sports Car">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption">
+                        <h1 class="display-3 fw-bold mb-4 animate-fade-in">Discover Your Dream Car</h1>
+                        <p class="lead mb-4 animate-fade-in-delay">Explore the finest collection of automotive
+                            excellence</p>
+                        <a href="#gallery" class="btn btn-gradient btn-lg animate-fade-in-delay-2">
+                            Explore Gallery <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1920&q=80"
+                        class="d-block w-100" alt="Modern Electric Car">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption">
+                        <h1 class="display-3 fw-bold mb-4 animate-fade-in">The Future of Mobility</h1>
+                        <p class="lead mb-4 animate-fade-in-delay">Experience cutting-edge automotive technology</p>
+                        <a href="#about" class="btn btn-gradient btn-lg animate-fade-in-delay-2">
+                            Learn More <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1920&q=80"
+                        class="d-block w-100" alt="Classic Luxury Car">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption">
+                        <h1 class="display-3 fw-bold mb-4 animate-fade-in">Compare & Choose Wisely</h1>
+                        <p class="lead mb-4 animate-fade-in-delay">Make informed decisions with expert insights</p>
+                        <a href="#features" class="btn btn-gradient btn-lg animate-fade-in-delay-2">
+                            Get Started <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section with Glassmorphic Cards -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Feature Card 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Explore Cars</h3>
+                        <p class="text-muted mb-0">Browse through our extensive collection of vehicles from various
+                            manufacturers and categories</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-bar-chart-fill"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Compare Models</h3>
+                        <p class="text-muted mb-0">Side-by-side comparison tools to help you make the right choice for
+                            your needs</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Expert Insights</h3>
+                        <p class="text-muted mb-0">Get detailed reviews, specifications, and expert recommendations</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Save Favorites</h3>
+                        <p class="text-muted mb-0">Create your personal collection of dream cars and track your
+                            preferences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="glass-panel p-5">
+                        <h2 class="display-5 fw-bold mb-4 gradient-text">About CarCrafters</h2>
+                        <p class="lead mb-4">Your trusted companion in the journey to find the perfect vehicle.</p>
+                        <p class="mb-4">At CarCrafters, we understand that choosing a car is more than just a
+                            purchase—it's a lifestyle decision. Whether you're a passionate car enthusiast, a first-time
+                            buyer, or someone exploring options, we're here to guide you.</p>
+                        <p class="mb-4">Our platform offers:</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Comprehensive car databases
+                                with detailed specifications</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Advanced comparison tools for
+                                informed decisions</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Expert reviews and user
+                                testimonials</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Latest automotive news and
+                                trends</li>
+                        </ul>
+                        <a href="#gallery" class="btn btn-gradient">
+                            Start Exploring <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image-grid">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80"
+                            alt="Car showcase" class="img-fluid rounded-4 shadow-lg mb-3">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400&q=80"
+                                    alt="Luxury car interior" class="img-fluid rounded-4 shadow">
+                            </div>
+                            <div class="col-6">
+                                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&q=80"
+                                    alt="Sports car" class="img-fluid rounded-4 shadow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3 gradient-text">Featured Collection</h2>
+                <p class="lead text-muted">Explore our handpicked selection of extraordinary vehicles</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Gallery Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80"
+                                alt="Luxury SUV" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Luxury SUV</h4>
+                                <p class="mb-3">Premium comfort meets performance</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/elecric-car 1.jpeg"
+                                alt="Electric Vehicle" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Electric Future</h4>
+                                <p class="mb-3">Sustainable driving excellence</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80"
+                                alt="Sports Car" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Sports Performance</h4>
+                                <p class="mb-3">Unleash the power within</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&q=80"
+                                alt="Sedan" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Executive Sedan</h4>
+                                <p class="mb-3">Elegance in motion</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1621135802920-133df287f89c?w=600&q=80"
+                                alt="Convertible" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Open-Air Freedom</h4>
+                                <p class="mb-3">Feel the wind, embrace the road</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=600&q=80"
+                                alt="Classic Car" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Timeless Classic</h4>
+                                <p class="mb-3">Heritage meets craftsmanship</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 7 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/mercedes.png"
+                                alt="Mercedes-Benz" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Mercedes S-Class</h4>
+                                <p class="mb-3">Ultimate luxury experience</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 8 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/tesla.png"
+                                alt="Tesla Model S" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Tesla Model S</h4>
+                                <p class="mb-3">Electric innovation leader</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 9 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="../images/porsche.png"
+                                alt="Porsche 911" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <h4 class="fw-bold mb-2">Porsche 911</h4>
+                                <p class="mb-3">Iconic sports car legend</p>
+                                <a href="#" class="btn btn-gradient btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="glass-panel text-center p-5">
+                <h2 class="display-5 fw-bold mb-4">Ready to Find Your Perfect Car?</h2>
+                <p class="lead mb-4">Join thousands of car enthusiasts who trust CarCrafters for their automotive
+                    journey</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="#gallery" class="btn btn-gradient btn-lg">
+                        Browse Collection <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                    <a href="#about" class="btn btn-outline-gradient btn-lg">
+                        Learn More <i class="bi bi-info-circle ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand mb-3">
+                        <span class="brand-text">CarCrafters</span>
+                    </div>
+                    <p class="text-muted mb-3">Your trusted destination for exploring, comparing, and discovering the
+                        perfect vehicle for your lifestyle.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Car Reviews</a></li>
+                        <li><a href="#">Comparison Tool</a></li>
+                        <li><a href="#">Buying Guide</a></li>
+                        <li><a href="#">Latest News</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="fw-bold mb-3">Newsletter</h5>
+                    <p class="text-muted mb-3">Get the latest car news and deals</p>
+                    <form class="newsletter-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-gradient" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <div class="contact-info">
+                        <small class="text-muted d-block"><i class="bi bi-envelope me-1"></i>info@carcrafters.com</small>
+                        <small class="text-muted d-block"><i class="bi bi-phone me-1"></i>+1 (555) 123-4567</small>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2024 CarCrafters. All rights reserved. Crafted for car enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="../static/js/main.js"></script>
+</body>
+
+</html>

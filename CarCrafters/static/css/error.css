@@ -1,0 +1,264 @@
+/* ===================================
+   404 Error Page Styles
+   =================================== */
+
+/* Error Section */
+.error-section {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+/* Error Card */
+.error-card {
+    padding: 3rem 2rem;
+    animation: fadeInScale 0.8s ease-out;
+}
+
+/* Error Icon Wrapper */
+.error-icon-wrapper {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.car-icon-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.error-car-icon {
+    font-size: 8rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: carBounce 2s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+/* Road Lines Animation */
+.road-line {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 4px;
+    background: repeating-linear-gradient(90deg,
+            var(--primary-blue) 0px,
+            var(--primary-blue) 30px,
+            transparent 30px,
+            transparent 60px);
+    animation: roadMove 1.5s linear infinite;
+    opacity: 0.6;
+}
+
+.road-line-2 {
+    bottom: 10px;
+    animation-delay: 0.75s;
+    opacity: 0.4;
+}
+
+/* Error Code */
+.error-code {
+    font-size: 8rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Error Actions */
+.error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Helpful Links */
+.helpful-links {
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.quick-link {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+}
+
+.quick-link:hover {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 102, 255, 0.3);
+}
+
+/* Info Card 404 */
+.info-card-404 {
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.info-item {
+    padding: 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes carBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes roadMove {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(-50%) translateX(-60px);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        text-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+    }
+
+    50% {
+        text-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+    }
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .quick-link {
+    color: var(--text-light);
+}
+
+body.dark-mode .quick-link:hover {
+    color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .error-section {
+        padding: 3rem 0;
+    }
+
+    .error-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .error-code {
+        font-size: 5rem;
+    }
+
+    .error-car-icon {
+        font-size: 5rem;
+    }
+
+    .error-icon-wrapper {
+        height: 150px;
+    }
+
+    .car-icon-container {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .error-code {
+        font-size: 4rem;
+    }
+
+    .error-car-icon {
+        font-size: 4rem;
+    }
+
+    .error-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .error-actions .btn {
+        width: 100%;
+        margin: 0 0 0.5rem 0 !important;
+    }
+
+    .quick-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .quick-link {
+        justify-content: center;
+    }
+}
